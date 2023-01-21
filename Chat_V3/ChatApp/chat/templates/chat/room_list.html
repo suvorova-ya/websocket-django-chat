@@ -1,0 +1,22 @@
+{% extends "layout/basic.html" %}
+{% load static %}
+
+{% block title%} Room list {% endblock %}
+
+{% block content %}
+
+
+    {% for m in room %}
+        
+    <h2 class='show-rooms-bg'>{{ m.name }}</h2>        
+            
+             <a href="{% url 'room_edit' m.slug %}"><button type="button" class="btn btn-outline-success">update room</button></a><br>
+             <a href="{% url 'room_delete' m.slug %}"><button type="button" class="btn btn-outline-success">Delete</button></a><br>
+            
+        
+
+    {% endfor %}
+
+
+                
+{% endblock content %}

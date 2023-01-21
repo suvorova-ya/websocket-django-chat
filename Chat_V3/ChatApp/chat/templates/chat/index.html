@@ -1,0 +1,23 @@
+{% extends "layout/basic.html" %}
+
+{% load static %}
+
+{% block title%} Welcome | {% endblock %}
+
+{%block content%}
+    {%if request.user.is_authenticated %}
+    <div class="rooms" style='top: 35%; font-size: 2rem; width: 18rem;'>
+        <div class="show-rooms">
+            <div class="show-rooms-bg" style='width: 18rem;'>
+                <a href="/create/" class="show-rooms-bg-front">Create a new room</a>
+            </div>
+        </div>
+     
+            <div class="show-rooms">
+                <div class="show-rooms-bg" style='width: 18rem;' >
+                    <a href="{% url 'rooms' %}" class="show-rooms-bg-front" style='align-text: center;'>Chats</a>
+                </div>
+        </div>
+    </div>
+    {% endif %}
+{%endblock%}

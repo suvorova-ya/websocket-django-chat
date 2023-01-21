@@ -1,0 +1,84 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+
+        <title>{{ title }}</title>
+       
+        <style>
+            .messages {
+                height: 400px;
+                overflow-y: auto;
+            }
+
+            .chatLog {
+                height: 300px;
+                background-color: #FFFFFF;
+                resize: none;
+            }
+    
+            .onlineUsersSelector {
+                height: 300px;
+            }
+
+        </style>
+
+        {% bootstrap_css %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        {% bootstrap_javascript jquery='slim' %}
+     
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+         
+
+         <link href="{% static 'css/main.css' %}" />
+         
+      
+</head>
+
+
+    <body class="cont ner-fluid">
+        <header class="mb-4">
+            <h1 class="display-1 text-center">Chat</h1>
+        </header>
+        <div class="row">
+            <ul class="col nav justify-content-end border">
+                <li class="nav-item"><a class="nav-link"
+                    .messages {
+                        height: 400px;
+                        overflow-y: auto;
+                    }
+
+
+                {% if user.is_authenticated %}
+                <a  href="/" ><i class="bi bi-arrow-down-right-square"></i>Главная страница<li></a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">Профиль</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'profile' %}"class="dropdown-item">Личный кабинет</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'list_room' %}"class="dropdown-item">Созданные чаты</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'logout' %}"class="dropdown-item">Выйти</a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Вход</a></li>
+                {% endif %}
+            </ul>
+        </div>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

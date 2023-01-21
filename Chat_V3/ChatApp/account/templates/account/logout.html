@@ -1,0 +1,9 @@
+{% extends "chat/main.html" %}
+
+{% block content %}
+<h2> Вы успешно вышли со своего аккаунта! </h2>
+
+<button> <a href="{% url 'login' %}">Войти в профиль</a> </button>
+<button> <a href="/">Главная страница</a> </button>
+{% endblock %}
+
